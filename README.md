@@ -7,6 +7,8 @@ card based strategy game _Schnapsen_.
 ## Getting started
 
 
+
+
 To get to know the concept of the game, please visit
 [this web page](https://www.pagat.com/marriage/schnaps.html).
 
