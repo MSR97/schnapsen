@@ -19,7 +19,7 @@ import sys
 # This package contains various machine learning algorithms
 import sklearn
 import sklearn.linear_model
-from sklearn.neural_network import MLPClassifier
+from sklearn.neural_network import MLPClassifier, MLPRegressor
 import joblib
 
 from bots.ml.ml import features
@@ -116,7 +116,9 @@ class TrainingModel:
         # The following tuple specifies the number of hidden layers in the neural
         # network, as well as the number of layers, implicitly through its length.
         # You can set any number of hidden layers, even just one. Experiment and see what works.
-        hidden_layer_sizes = (64, 32)
+        # hidden_layer_sizes = (64, 32)
+        hidden_layer_sizes = (256, 128)
+
 
         # The learning rate determines how fast we move towards the optimal solution.
         # A low learning rate will converge slowly, but a large one might overshoot.
@@ -137,6 +139,7 @@ class TrainingModel:
         # Train a neural network
         learner = MLPClassifier(hidden_layer_sizes=hidden_layer_sizes, learning_rate_init=learning_rate, alpha=regularization_strength, verbose=True, early_stopping=True, n_iter_no_change=6)
         # learner = sklearn.linear_model.LogisticRegression()
+        # learner=sklearn.linear_model.
 
         model = learner.fit(data, target)
 

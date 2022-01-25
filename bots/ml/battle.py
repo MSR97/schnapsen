@@ -12,7 +12,7 @@ def play_a_game(player1,player2):
     engine.play(player1,util.load_player(player2),state=State.generate(phase=startphase), max_time=max_time, verbose=verbose)
 
 
-ml_model_name="kb_model.pkl"
+ml_model_name="bully_model.pkl"
 ml_player=ml.Bot(model_file='./bots/ml/models/'+ml_model_name)
 other_player="rand"
 
