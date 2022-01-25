@@ -112,8 +112,6 @@ def features(state):
 
     # Get trump suit
     trump_suit = state.get_trump_suit()
-    feature_set.append(trump_suit)
-
 
     # Add phase to feature set
     phase = state.get_phase()
@@ -134,14 +132,6 @@ def features(state):
 
     # Add opponent's played card to feature set
     opponents_played_card = state.get_opponents_played_card()
-    feature_set.append(opponents_played_card)
-
-    get_prev_trick=state.get_prev_trick()
-    feature_set.append(get_prev_trick)
-
-    
-
-
 
 
     ################## You do not need to do anything below this line ########################

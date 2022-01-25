@@ -117,7 +117,7 @@ class TrainingModel:
         # network, as well as the number of layers, implicitly through its length.
         # You can set any number of hidden layers, even just one. Experiment and see what works.
         # hidden_layer_sizes = (64, 32)
-        hidden_layer_sizes = (256, 128)
+        hidden_layer_sizes = (128, 64)
 
 
         # The learning rate determines how fast we move towards the optimal solution.
@@ -137,9 +137,9 @@ class TrainingModel:
             data, target = pickle.load(output)
 
         # Train a neural network
-        learner = MLPClassifier(hidden_layer_sizes=hidden_layer_sizes, learning_rate_init=learning_rate, alpha=regularization_strength, verbose=True, early_stopping=True, n_iter_no_change=6)
+        # learner = MLPClassifier(hidden_layer_sizes=hidden_layer_sizes, learning_rate_init=learning_rate, alpha=regularization_strength, verbose=True, early_stopping=True, n_iter_no_change=6)
         # learner = sklearn.linear_model.LogisticRegression()
-        # learner=sklearn.linear_model.
+        learner = MLPClassifier(hidden_layer_sizes=hidden_layer_sizes, learning_rate_init=learning_rate, alpha=regularization_strength, verbose=True, early_stopping=True, n_iter_no_change=6,activation='logistic')
 
         model = learner.fit(data, target)
 
