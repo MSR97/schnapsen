@@ -9,6 +9,7 @@ import sys, os
 sys.path.append(os.path.abspath(os.path.join('..', 'schnapsen')))
 
 
+
 from api import State, util
 import pickle
 import os.path
@@ -21,6 +22,9 @@ import sklearn
 import sklearn.linear_model
 from sklearn.neural_network import MLPClassifier, MLPRegressor
 import joblib
+
+from sklearn.naive_bayes import CategoricalNB
+
 
 from bots.ml.ml import features
 
@@ -137,9 +141,9 @@ class TrainingModel:
             data, target = pickle.load(output)
 
         # Train a neural network
-        # learner = MLPClassifier(hidden_layer_sizes=hidden_layer_sizes, learning_rate_init=learning_rate, alpha=regularization_strength, verbose=True, early_stopping=True, n_iter_no_change=6)
+        learner = MLPClassifier(hidden_layer_sizes=hidden_layer_sizes, learning_rate_init=learning_rate, alpha=regularization_strength, verbose=True, early_stopping=True, n_iter_no_change=6)
         # learner = sklearn.linear_model.LogisticRegression()
-        learner = MLPClassifier(hidden_layer_sizes=hidden_layer_sizes, learning_rate_init=learning_rate, alpha=regularization_strength, verbose=True, early_stopping=True, n_iter_no_change=6,activation='logistic')
+        # learner = CategoricalNB()
 
         model = learner.fit(data, target)
 

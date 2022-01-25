@@ -15,7 +15,7 @@ number_of_games=1000
 # rand_ml.train_model()
 ###############################################################################
 bully_ml=t.TrainingModel(bully.Bot(),"bully",number_of_games)
-bully_ml.create_dataset()
+# bully_ml.create_dataset()
 bully_ml.train_model()
 ###############################################################################
 # kb_ml=t.TrainingModel(kbbot.Bot(),"kb",number_of_games)
