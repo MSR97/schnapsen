@@ -7,14 +7,16 @@ startphase = 1
 verbose=True
 max_time=10000
 
+ml_model_name="bully_model.pkl"
+player_1_ml=ml.Bot(model_file='./bots/ml/models/'+ml_model_name)
+player_2_other_bot="rand"
+
 
 def play_a_game(player1,player2):
     engine.play(player1,util.load_player(player2),state=State.generate(phase=startphase), max_time=max_time, verbose=verbose)
 
 
-ml_model_name="bully_model.pkl"
-ml_player=ml.Bot(model_file='./bots/ml/models/'+ml_model_name)
-other_player="rand"
 
 
-play_a_game(ml_player,other_player)
+if __name__ == "__main__":
+    play_a_game(player_1_ml,player_2_other_bot)
