@@ -1,0 +1,24 @@
+{
+    "os": "Windows-10-10.0.22000-SP0",
+    "python": "3.9.7",
+    "heartbeatAt": "2022-01-28T13:48:10.618382",
+    "startedAt": "2022-01-28T13:48:08.849749",
+    "docker": null,
+    "gpu": "NVIDIA GeForce GTX 1070",
+    "gpu_count": 1,
+    "cpu_count": 12,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "d:\\University\\Project_IS\\schnapsen\\bots\\ml\\ml_core.py",
+    "codePath": "bots\\ml\\ml_core.py",
+    "git": {
+        "remote": "https://github.com/MSR97/schnapsen.git",
+        "commit": "4dbb3d0cca6bcfc7836e8701f81901872d81704c"
+    },
+    "email": "rmohammadsajjad@outlook.com",
+    "root": "D:/University/Project_IS/schnapsen",
+    "host": "MohammadSajjad",
+    "username": "rmoha",
+    "executable": "C:\\Users\\rmoha\\anaconda3\\envs\\UNI\\python.exe"
+}

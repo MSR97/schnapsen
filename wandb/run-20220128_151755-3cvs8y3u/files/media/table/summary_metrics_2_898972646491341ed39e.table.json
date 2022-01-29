@@ -1,0 +1,1 @@
+{"columns": ["metric_name", "metric_value", "model_name"], "data": [["accuracy_score", 0.62, "ComplementNB"], ["precision", 0.62, "ComplementNB"], ["recall", 0.62, "ComplementNB"], ["f1_score", 0.62, "ComplementNB"]]}

@@ -24,9 +24,29 @@ from sklearn.neural_network import MLPClassifier, MLPRegressor
 import joblib
 
 from sklearn.naive_bayes import CategoricalNB
+from sklearn.naive_bayes import GaussianNB
+from sklearn.naive_bayes import ComplementNB
+from sklearn.naive_bayes import BernoulliNB
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.datasets import make_classification
+from sklearn.datasets import make_hastie_10_2
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.datasets import load_digits
+from sklearn.linear_model import Perceptron
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import GridSearchCV
+
 
 
 from bots.ml.ml import features
+
+
+# Visualization
+import wandb
+import wandb.sklearn
+wandb.init(project="my-test-project", entity="provisual")
 
 class TrainingModel:
 
@@ -121,31 +141,74 @@ class TrainingModel:
         # network, as well as the number of layers, implicitly through its length.
         # You can set any number of hidden layers, even just one. Experiment and see what works.
         # hidden_layer_sizes = (64, 32)
-        hidden_layer_sizes = (128, 64)
+        # hidden_layer_sizes = (128, 64)
+        hidden_layer_sizes = (256, 128)
+
 
 
         # The learning rate determines how fast we move towards the optimal solution.
         # A low learning rate will converge slowly, but a large one might overshoot.
+        # learning_rate = 0.0001
         learning_rate = 0.0001
 
         # The regularization term aims to prevent overfitting, and we can tweak its strength here.
+        # regularization_strength = 0.0001
+
         regularization_strength = 0.0001
+
+        parameter_space = {
+    'hidden_layer_sizes': [(50,50,50), (50,100,50), (100,)],
+    'activation': ['tanh', 'relu'],
+    'solver': ['sgd', 'adam'],
+    'alpha': [0.0001, 0.05],
+    'learning_rate': ['constant','adaptive'],
+}
 
         #############################################
 
         start = time.time()
 
         print("Starting training phase...")
-
+        
         with open(self.dataset_path, 'rb') as output:
             data, target = pickle.load(output)
 
         # Train a neural network
         learner = MLPClassifier(hidden_layer_sizes=hidden_layer_sizes, learning_rate_init=learning_rate, alpha=regularization_strength, verbose=True, early_stopping=True, n_iter_no_change=6)
-        # learner = sklearn.linear_model.LogisticRegression()
-        # learner = CategoricalNB()
 
-        model = learner.fit(data, target)
+        # learner = sklearn.linear_model.LogisticRegression()
+        #### learner = MultinomialNB()
+        ##### learner=AdaBoostClassifier(n_estimators=100, random_state=0)
+        # learner=sklearn.linear_model.LogisticRegression()
+        ####learner = GradientBoostingClassifier(n_estimators=200, learning_rate=1.0,max_depth=10, random_state=50)
+        # learner = Perceptron(tol=1e-3, random_state=100)
+
+        # mlp = MLPClassifier(max_iter=500)
+        # learner = GridSearchCV(mlp, parameter_space)
+        
+        X_train, X_test, Y_train, Y_test = train_test_split(data, target)
+        model = learner.fit(X_train, Y_train)
+        y_pred = model.predict(X_test)
+        y_probas = model.predict_proba(X_test)
+        labels=['won','lost']
+
+        # wandb.sklearn.plot_classifier(model, 
+        #                       X_train, X_test, 
+        #                       Y_train, Y_test, 
+        #                       y_pred, y_probas, 
+        #                       labels, 
+        #                       is_binary=True, 
+        #                       model_name='AdaBoostClassifier')
+
+        wandb.sklearn.plot_class_proportions(Y_train, Y_test, labels)
+        wandb.sklearn.plot_confusion_matrix(Y_test, y_pred, labels)
+        wandb.sklearn.plot_roc(Y_test, y_probas, labels)
+        wandb.sklearn.plot_summary_metrics(model, X=X_train, y=Y_train, X_test=X_test, y_test=Y_test)
+
+ 
+        # wandb.sklearn.plot_learning_curve(model, data, target)
+        # wandb.sklearn.plot_feature_importances(model,target)
+
 
         # Check for class imbalance
         count = {}

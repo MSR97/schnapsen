@@ -1,0 +1,1 @@
+{"columns": ["Predicted", "Actual", "Count"], "data": [["won", "won", 14676], ["won", "lost", 3842], ["lost", "won", 3864], ["lost", "lost", 14928]]}
