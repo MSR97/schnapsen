@@ -23,7 +23,7 @@ number_of_games=10000
 # kb_ml.train_model()
 ###############################################################################
 rdeep_ml=t.TrainingModel(rdeep.Bot(),"rdeep",number_of_games)
-# rdeep_ml.create_dataset()
+rdeep_ml.create_dataset()
 rdeep_ml.train_model()
 ###############################################################################
 

@@ -8,15 +8,16 @@ startphase = 1
 verbose=True
 max_time=10000
 
+trained_directory='Adaboost'
 ml_model_name="rdeep_model.pkl"
-player_1_ml=ml.Bot(model_file='./bots/ml/models/'+ml_model_name)
+player_ML=ml.Bot(model_file='./bots/ml/models/'+trained_directory+'/'+ml_model_name)
 player_2_other_bot="rdeep"
 
 
 def play_a_game(player1,player2):
     engine.play(player1,util.load_player(player2),state=State.generate(phase=startphase), max_time=max_time, verbose=verbose)
 
-def run_tournament(players):
+def run_tournament(players,mlbot):
 
     players= players
     repeats=10
@@ -27,7 +28,7 @@ def run_tournament(players):
     bots = []
     for botname in botnames:
         bots.append(util.load_player(botname))
-        bots.append(player_1_ml)
+        bots.append(mlbot)
 
     n = len(bots)
     wins = [0] * len(bots)
@@ -62,5 +63,5 @@ def run_tournament(players):
         print('    bot {}: {} points'.format(bots[i], wins[i]))
 
 if __name__ == "__main__":
-    play_a_game(player_1_ml,player_2_other_bot)
-    # run_tournament("rand,bully,rdeep")
+    # play_a_game(player_1_ml,player_2_other_bot)
+    run_tournament("rdeep",player_ML)
