@@ -140,9 +140,9 @@ class TrainingModel:
         # The following tuple specifies the number of hidden layers in the neural
         # network, as well as the number of layers, implicitly through its length.
         # You can set any number of hidden layers, even just one. Experiment and see what works.
-        # hidden_layer_sizes = (64, 32)
+        hidden_layer_sizes = (64, 32)
         # hidden_layer_sizes = (128, 64)
-        hidden_layer_sizes = (256, 128)
+        # hidden_layer_sizes = (256, 128)
 
 
 
@@ -156,13 +156,6 @@ class TrainingModel:
 
         regularization_strength = 0.0001
 
-        parameter_space = {
-    'hidden_layer_sizes': [(50,50,50), (50,100,50), (100,)],
-    'activation': ['tanh', 'relu'],
-    'solver': ['sgd', 'adam'],
-    'alpha': [0.0001, 0.05],
-    'learning_rate': ['constant','adaptive'],
-}
 
         #############################################
 
@@ -178,7 +171,7 @@ class TrainingModel:
 
         # learner = sklearn.linear_model.LogisticRegression()
         #### learner = MultinomialNB()
-        ##### learner=AdaBoostClassifier(n_estimators=100, random_state=0)
+        # learner=AdaBoostClassifier(n_estimators=100, random_state=0)
         # learner=sklearn.linear_model.LogisticRegression()
         ####learner = GradientBoostingClassifier(n_estimators=200, learning_rate=1.0,max_depth=10, random_state=50)
         # learner = Perceptron(tol=1e-3, random_state=100)
@@ -187,10 +180,10 @@ class TrainingModel:
         # learner = GridSearchCV(mlp, parameter_space)
         
         X_train, X_test, Y_train, Y_test = train_test_split(data, target)
-        model = learner.fit(X_train, Y_train)
-        y_pred = model.predict(X_test)
-        y_probas = model.predict_proba(X_test)
-        labels=['won','lost']
+        model = learner.fit(data, target)
+        # y_pred = model.predict(X_test)
+        # y_probas = model.predict_proba(X_test)
+        # labels=['won','lost']
 
         # wandb.sklearn.plot_classifier(model, 
         #                       X_train, X_test, 
@@ -200,10 +193,10 @@ class TrainingModel:
         #                       is_binary=True, 
         #                       model_name='AdaBoostClassifier')
 
-        wandb.sklearn.plot_class_proportions(Y_train, Y_test, labels)
-        wandb.sklearn.plot_confusion_matrix(Y_test, y_pred, labels)
-        wandb.sklearn.plot_roc(Y_test, y_probas, labels)
-        wandb.sklearn.plot_summary_metrics(model, X=X_train, y=Y_train, X_test=X_test, y_test=Y_test)
+        # wandb.sklearn.plot_class_proportions(Y_train, Y_test, labels)
+        # wandb.sklearn.plot_confusion_matrix(Y_test, y_pred, labels)
+        # wandb.sklearn.plot_roc(Y_test, y_probas, labels)
+        # wandb.sklearn.plot_summary_metrics(model, X=X_train, y=Y_train, X_test=X_test, y_test=Y_test)
 
  
         # wandb.sklearn.plot_learning_curve(model, data, target)
