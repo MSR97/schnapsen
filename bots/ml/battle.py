@@ -9,11 +9,14 @@ startphase = 1
 verbose=True
 max_time=10000
 
+
+
 number_of_games_sets_to_play=[1,2,3]
-
-
 #For changing Model Please change the name of models directory
 trained_directory='Neural_Network'
+
+
+
 
 #Please Dont change the below codes
 #####################################################################################
