@@ -21,13 +21,19 @@ class Bot:
 
     __model = None
 
+    _model_name= None
+
     def __init__(self, randomize=True, model_file=DEFAULT_MODEL):
 
         print(model_file)
         self.__randomize = randomize
 
+        self._model_name=model_file
+
+
         # Load the model
         self.__model = joblib.load(model_file)
+
 
     def get_move(self, state):
 

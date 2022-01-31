@@ -11,9 +11,8 @@ max_time=10000
 
 
 
-number_of_games_sets_to_play=[10,100,500]
+number_of_games_sets_to_play=[1]
 #For changing Model Please change the name of models directory
-trained_directory='Neural_Network'
 
 
 
@@ -21,16 +20,22 @@ trained_directory='Neural_Network'
 #Please Dont change the below codes
 #####################################################################################
 ml_model_name="rdeep_model.pkl"
-player_ML=ml.Bot(model_file='./bots/ml/models/'+trained_directory+'/'+ml_model_name)
+neural_network_ml=ml.Bot(model_file='./bots/ml/models/'+'Neural_Network'+'/'+ml_model_name)
+MultinomialNB_ml=ml.Bot(model_file='./bots/ml/models/'+'MultinomialNB'+'/'+ml_model_name)
+Logistic_Regression_ml=ml.Bot(model_file='./bots/ml/models/'+'Logistic_Regression'+'/'+ml_model_name)
+GradientBoosting_ml=ml.Bot(model_file='./bots/ml/models/'+'GradientBoosting'+'/'+ml_model_name)
+AdaBoost_ml=ml.Bot(model_file='./bots/ml/models/'+'AdaBoost'+'/'+ml_model_name)
+
+
 player_2_other_bot="rdeep"
-csv_filename = "./bots/ml/reports/"+trained_directory+"_games.csv"
+csv_filename = "./bots/ml/reports/"+"All_bots"+"_games.csv"
 writer=open(csv_filename, 'a+', newline='')
 #####################################################################################
 
 def play_a_game(player1,player2):
     engine.play(player1,util.load_player(player2),state=State.generate(phase=startphase), max_time=max_time, verbose=verbose)
 
-def run_tournament(players,mlbot):
+def run_tournament(players):
 
     for game in number_of_games_sets_to_play:
         writer.write("|||||||||||||||||||||||||||||||||||||||||||||"+"\n")
@@ -45,8 +50,14 @@ def run_tournament(players,mlbot):
 
         bots = []
         for botname in botnames:
-            bots.append(util.load_player(botname))
-            bots.append(mlbot)
+            # bots.append(util.load_player(botname))
+            bots.append(neural_network_ml)
+            bots.append(MultinomialNB_ml)
+            bots.append(Logistic_Regression_ml)
+            bots.append(GradientBoosting_ml)
+            bots.append(AdaBoost_ml)
+
+
 
         n = len(bots)
         wins = [0] * len(bots)
@@ -80,8 +91,8 @@ def run_tournament(players,mlbot):
         print('Results:')
         writer.write("Results Of {} TotalGames".format(totalgames)+"\n")
         for i in range(len(bots)):
-            print('    bot {}: {} points'.format(bots[i], wins[i]))
-            writer.write('    bot {}: {} points'.format(bots[i], wins[i])+"\n")
+            print('    bot {}: {} points'.format(bots[i]._model_name, wins[i]))
+            writer.write('    bot {}: {} points'.format(bots[i]._model_name, wins[i])+"\n")
 
     writer.write('////////////////////////////////////////////////////////////')
 
@@ -92,5 +103,5 @@ def run_tournament(players,mlbot):
 
 if __name__ == "__main__":
     # play_a_game(player_1_ml,player_2_other_bot)
-    run_tournament("rdeep",player_ML)
+    run_tournament("rdeep")
     writer.close()

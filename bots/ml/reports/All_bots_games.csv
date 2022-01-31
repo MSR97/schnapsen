@@ -1,0 +1,10 @@
+|||||||||||||||||||||||||||||||||||||||||||||
+Number of set of games 1 :
+Playing 10 games:
+Results Of 10.0 TotalGames
+    bot ./bots/ml/models/Neural_Network/rdeep_model.pkl: 3 points
+    bot ./bots/ml/models/MultinomialNB/rdeep_model.pkl: 2 points
+    bot ./bots/ml/models/Logistic_Regression/rdeep_model.pkl: 2 points
+    bot ./bots/ml/models/GradientBoosting/rdeep_model.pkl: 2 points
+    bot ./bots/ml/models/AdaBoost/rdeep_model.pkl: 2 points
+////////////////////////////////////////////////////////////

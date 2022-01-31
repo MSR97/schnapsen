@@ -2,18 +2,18 @@
 Number of set of games 10 :
 Playing 10 games:
 Results Of 10.0 TotalGames
-    bot <bots.rdeep.rdeep.Bot object at 0x7f58c5167fd0>: 6 points
-    bot <bots.ml.ml.Bot object at 0x7f58c5147e90>: 8 points
+    bot <bots.rdeep.rdeep.Bot object at 0x7f58c5020d10>: 9 points
+    bot <bots.ml.ml.Bot object at 0x7f58c5147f10>: 5 points
 |||||||||||||||||||||||||||||||||||||||||||||
 Number of set of games 100 :
 Playing 100 games:
 Results Of 100.0 TotalGames
-    bot <bots.rdeep.rdeep.Bot object at 0x7f58c5111b90>: 50 points
-    bot <bots.ml.ml.Bot object at 0x7f58c5147e90>: 94 points
+    bot <bots.rdeep.rdeep.Bot object at 0x7f58c55ff290>: 82 points
+    bot <bots.ml.ml.Bot object at 0x7f58c5147f10>: 51 points
 |||||||||||||||||||||||||||||||||||||||||||||
 Number of set of games 1000 :
 Playing 1000 games:
 Results Of 1000.0 TotalGames
-    bot <bots.rdeep.rdeep.Bot object at 0x7f58c51111d0>: 791 points
-    bot <bots.ml.ml.Bot object at 0x7f58c5147e90>: 807 points
+    bot <bots.rdeep.rdeep.Bot object at 0x7f58c508d090>: 921 points
+    bot <bots.ml.ml.Bot object at 0x7f58c5147f10>: 547 points
 ////////////////////////////////////////////////////////////
